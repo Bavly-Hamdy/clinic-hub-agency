@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-ink text-stone-200 font-body antialiased;
+    line-height: 1.75;
+  }
+  ::selection {
+    background: #c5a059;
+    color: #000000;
+  }
+  :focus-visible {
+    outline: 1px solid #c5a059;
+    outline-offset: 3px;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight text-paper;
+    line-height: 1.2;
+  }
+
+  /* Architectural Hairline Dividers */
+  hr {
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  /* Minimalist Monospaced Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #09090b;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #27272a;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #8f7032;
+  }
+}
+
+@layer components {
+  /* Bespoke Architectural Buttons (Anti-AI: No rounded pill bubbles, crisp craftsmanship) */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2.5 px-6 py-3 text-[14px] font-medium tracking-wide bg-brass text-ink hover:bg-brass-soft transition-all duration-150 active:translate-y-[1px];
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2.5 px-6 py-3 text-[14px] font-medium tracking-wide border border-white/20 text-paper hover:border-brass hover:text-brass transition-all duration-150 active:translate-y-[1px];
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-3 py-2 text-[13px] font-normal text-stone-400 hover:text-white transition-colors duration-150;
+  }
+
+  /* Editorial Craft Card (No cheap glowing neon, clean physical borders) */
+  .editorial-card {
+    @apply border border-white/10 bg-ink-soft/60 transition-colors duration-200 hover:border-white/25;
+  }
+
+  /* Hairline label */
+  .meta-tag {
+    @apply text-[11px] font-mono tracking-widest uppercase text-stone-400;
+  }
+}
+
+/* Subtle architectural drawing of the prescription */
+.pad-frame {
+  stroke-dasharray: 1400;
+  stroke-dashoffset: 1400;
+  animation: drawPad 1.6s cubic-bezier(0.65, 0, 0.35, 1) 0.1s forwards;
+}
+.pad-fade {
+  opacity: 0;
+  animation: fadePad 0.8s ease 1.2s forwards;
+}
+
+@keyframes drawPad {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes fadePad {
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .pad-frame { animation: none; stroke-dashoffset: 0; }
+  .pad-fade { animation: none; opacity: 1; }
+}
